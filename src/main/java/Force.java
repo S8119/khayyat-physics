@@ -21,12 +21,12 @@ public class Force
 
     public double getDegrees()
     {
-        return Math.toDegrees(Math.atan2(y,x));
+        return Math.toDegrees(Math.atan2(y, x));
     }
 
     public double getMagnitude()
     {
-        return Math.sqrt(x*x + y*y);
+        return Math.sqrt(x * x + y * y);
     }
 
     public Force add(Force other)
@@ -40,7 +40,7 @@ public class Force
     public Force normalize()
     {
         double magnitude = getMagnitude(); // so magnitude only needs to be calculated once
-        return new Force(x/magnitude, y/magnitude);
+        return new Force(x / magnitude, y / magnitude);
     }
 
     /**
