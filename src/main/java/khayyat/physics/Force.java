@@ -1,3 +1,5 @@
+package khayyat.physics;
+
 public class Force
 {
     private double x;
