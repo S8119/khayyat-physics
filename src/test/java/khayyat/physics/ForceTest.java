@@ -87,7 +87,7 @@ public class ForceTest
         Force f1 = new Force(37.0365, 28.9360);
 
         //when
-        for(double i = 0; i < 5.0; i += 0.001)
+        for (double i = 0; i < 5.0; i += 0.001)
         {
             f1 = f1.add(scaledGravity);
             Force scaledF1 = f1.scale(0.001);

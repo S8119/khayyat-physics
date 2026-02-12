@@ -19,7 +19,7 @@ public class GravityComponent extends JComponent
 
         g.drawOval((int) x, (int) y, 1, 1);
         //when
-        for(double i = 0; i < 5.0; i += 0.001)
+        for (double i = 0; i < 5.0; i += 0.001)
         {
             f1 = f1.add(scaledGravity);
             Force scaledF1 = f1.scale(0.001);
