@@ -31,8 +31,8 @@ public class Projectile
 
     public void apply(double time)
     {
-        Force ScaledGravity = GRAVITY.scale(time);
-        force = force.add(ScaledGravity);
+        Force scaledGravity = GRAVITY.scale(time);
+        force = force.add(scaledGravity);
         Force scaledForce = force.scale(time);
         x += scaledForce.getX();
         y += scaledForce.getY();
