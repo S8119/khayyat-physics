@@ -15,14 +15,14 @@ public class GravityFrame extends JFrame
 
         setLayout(new BorderLayout());
 
-        JLabel xLabel = new JLabel("Force x");
+        final JLabel xLabel = new JLabel("Force x");
         JTextField xField = new JTextField("37.0365");
-        JLabel yLabel = new JLabel("Force y");
+        final JLabel yLabel = new JLabel("Force y");
         JTextField yField = new JTextField("28.9360");
-        JLabel timeLabel = new JLabel("Time");
+        final JLabel timeLabel = new JLabel("Time");
         JTextField timeField = new JTextField("5.0");
 
-        JButton button = new JButton("Draw");
+        final JButton button = new JButton("Draw");
 
         JLabel angleLabel = new JLabel("Angle (Degrees): ");
         JLabel magLabel = new JLabel("Magnitude: ");
