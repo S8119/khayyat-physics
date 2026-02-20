@@ -22,5 +22,7 @@ class ProjectileTest
         //then
         assertEquals(185.1825, p.getX(), .1);
         assertEquals(22.1555, p.getY(), .1);
+        assertEquals(37.0365, p.getForce().getX(), .1);
+        assertEquals(-20.0640, p.getForce().getY(), .1);
     }
 }
