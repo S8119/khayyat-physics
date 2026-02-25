@@ -38,10 +38,14 @@ public class GravityFrame extends JFrame
                         Double.parseDouble(xField.getText()),
                         Double.parseDouble(yField.getText())
                 );
+                Projectile projectile = new Projectile(force, 0, 0);
                 gravityComponent.setForce(force);
-                gravityComponent.setTime(Double.parseDouble(timeField.getText()));
-                angleLabel.setText("Angle (Degrees): " + force.getDegrees());
-                magLabel.setText("Magnitude: " + force.getMagnitude());
+                double time = Double.parseDouble(timeField.getText());
+                gravityComponent.setTime(time);
+                projectile.apply(time);
+                Force forceAfterTime = projectile.getForce();
+                angleLabel.setText("Angle (Degrees): " + forceAfterTime.getDegrees());
+                magLabel.setText("Magnitude: " + forceAfterTime.getMagnitude());
             }
         });
 
