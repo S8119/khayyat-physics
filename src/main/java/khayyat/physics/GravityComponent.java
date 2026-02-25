@@ -33,5 +33,8 @@ public class GravityComponent extends JComponent
             p.apply(.001);
             g.drawOval((int) p.getX(), (int) -p.getY(), 1, 1);
         }
+
+        g.setColor(Color.green);
+        g.drawLine(0, 0, (int) force.getX(), (int) -force.getY());
     }
 }

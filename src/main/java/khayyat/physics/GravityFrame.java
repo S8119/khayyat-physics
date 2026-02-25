@@ -2,8 +2,7 @@ package khayyat.physics;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class GravityFrame extends JFrame
 {
@@ -28,6 +27,64 @@ public class GravityFrame extends JFrame
         JLabel magLabel = new JLabel("Magnitude: ");
 
         GravityComponent gravityComponent = new GravityComponent();
+
+        gravityComponent.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                Force force = new Force(e.getX(), gravityComponent.getHeight() - e.getY());
+                gravityComponent.setForce(force);
+                xField.setText(String.valueOf(force.getX()));
+                yField.setText(String.valueOf(force.getY()));
+                angleLabel.setText("Angle (Degrees): " + force.getDegrees());
+                magLabel.setText("Magnitude: " + force.getMagnitude());
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
+
+        gravityComponent.addMouseMotionListener(new MouseMotionListener()
+        {
+            @Override
+            public void mouseDragged(MouseEvent e)
+            {
+                Force force = new Force(e.getX(), gravityComponent.getHeight() - e.getY());
+                xField.setText(String.valueOf(force.getX()));
+                yField.setText(String.valueOf(force.getY()));
+                gravityComponent.setForce(force);
+                angleLabel.setText("Angle (Degrees): " + force.getDegrees());
+                magLabel.setText("Magnitude: " + force.getMagnitude());
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e)
+            {
+
+            }
+        });
 
         button.addActionListener(new ActionListener()
         {
