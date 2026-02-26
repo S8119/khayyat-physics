@@ -25,9 +25,21 @@ public class GravityComponent extends JComponent
     {
         super.paintComponent(g);
 
+        g.setColor(new Color(150, 200, 255));
+        for (int i = 0; i < getWidth(); i += 20)
+        {
+            g.drawLine(i, 0, i, getHeight());
+        }
+        for (int i = getHeight(); i > 0; i -= 20) //Starting from getHeight, not 0, so lines start on bottom of screen
+        {
+            g.drawLine(0, i, getWidth(), i);
+        }
+
         Projectile p = new Projectile(force, 0, 0);
 
         g.translate(0, getHeight());
+
+        g.setColor(Color.black);
         for (double i = 0; i < time; i += 0.001)
         {
             p.apply(.001);
