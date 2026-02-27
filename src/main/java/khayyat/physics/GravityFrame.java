@@ -29,7 +29,7 @@ public class GravityFrame extends JFrame
         GravityComponent gravityComponent = new GravityComponent();
 
         GravityController gravityController = new GravityController(
-                gravityComponent, xField, yField, angleLabel, magLabel);
+                gravityComponent, xField, yField, timeField, angleLabel, magLabel);
 
         gravityComponent.addMouseListener(new MouseListener()
         {
@@ -84,14 +84,9 @@ public class GravityFrame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                Force force = new Force(
-                        Double.parseDouble(xField.getText()),
+                gravityController.updateForce(Double.parseDouble(xField.getText()),
                         Double.parseDouble(yField.getText())
                 );
-                gravityComponent.setForce(force);
-                gravityComponent.setTime(Double.parseDouble(timeField.getText()));
-                angleLabel.setText("Angle (Degrees): " + force.getDegrees());
-                magLabel.setText("Magnitude: " + force.getMagnitude());
             }
         });
 

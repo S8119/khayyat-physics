@@ -7,14 +7,17 @@ public class GravityController
     private final GravityComponent gravityComponent;
     private final JTextField xField;
     private final JTextField yField;
+    private final JTextField timeField;
     private final JLabel angleLabel;
     private final JLabel magLabel;
 
-    public GravityController(GravityComponent gc, JTextField x, JTextField y, JLabel angle, JLabel mag)
+    public GravityController(
+            GravityComponent gc, JTextField x, JTextField y, JTextField time, JLabel angle, JLabel mag)
     {
         gravityComponent = gc;
         xField = x;
         yField = y;
+        timeField = time;
         angleLabel = angle;
         magLabel = mag;
     }
@@ -23,6 +26,7 @@ public class GravityController
     {
         Force force = new Force(x, y);
         gravityComponent.setForce(force);
+        gravityComponent.setTime(Double.parseDouble(timeField.getText()));
         xField.setText(String.valueOf(x));
         yField.setText(String.valueOf(y));
         angleLabel.setText("Angle (Degrees): " + force.getDegrees());
