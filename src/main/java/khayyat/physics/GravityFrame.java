@@ -8,7 +8,7 @@ public class GravityFrame extends JFrame
 {
     public GravityFrame()
     {
-        setSize(300, 400);
+        setSize(600, 400);
         setTitle("Gravity Frame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

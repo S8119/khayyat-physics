@@ -1,6 +1,7 @@
 package khayyat.physics;
 
 import javax.swing.*;
+import java.text.DecimalFormat;
 
 public class GravityController
 {
@@ -29,7 +30,9 @@ public class GravityController
         gravityComponent.setTime(Double.parseDouble(timeField.getText()));
         xField.setText(String.valueOf(x));
         yField.setText(String.valueOf(y));
-        angleLabel.setText("Angle (Degrees): " + force.getDegrees());
-        magLabel.setText("Magnitude: " + force.getMagnitude());
+
+        DecimalFormat df = new DecimalFormat("#.##");
+        angleLabel.setText("Angle (Degrees): " + df.format(force.getDegrees()));
+        magLabel.setText("Magnitude: " + df.format(force.getMagnitude()));
     }
 }
