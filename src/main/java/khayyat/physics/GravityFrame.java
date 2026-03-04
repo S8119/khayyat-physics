@@ -2,14 +2,13 @@ package khayyat.physics;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class GravityFrame extends JFrame
 {
     public GravityFrame()
     {
-        setSize(300, 400);
+        setSize(600, 400);
         setTitle("Gravity Frame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -29,19 +28,65 @@ public class GravityFrame extends JFrame
 
         GravityComponent gravityComponent = new GravityComponent();
 
+        GravityController gravityController = new GravityController(
+                gravityComponent, xField, yField, timeField, angleLabel, magLabel);
+
+        gravityComponent.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                gravityController.updateForce(e.getX(), gravityComponent.getHeight() - e.getY());
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
+
+        gravityComponent.addMouseMotionListener(new MouseMotionListener()
+        {
+            @Override
+            public void mouseDragged(MouseEvent e)
+            {
+                gravityController.updateForce(e.getX(), gravityComponent.getHeight() - e.getY());
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e)
+            {
+
+            }
+        });
+
         button.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                Force force = new Force(
-                        Double.parseDouble(xField.getText()),
+                gravityController.updateForce(Double.parseDouble(xField.getText()),
                         Double.parseDouble(yField.getText())
                 );
-                gravityComponent.setForce(force);
-                gravityComponent.setTime(Double.parseDouble(timeField.getText()));
-                angleLabel.setText("Angle (Degrees): " + force.getDegrees());
-                magLabel.setText("Magnitude: " + force.getMagnitude());
             }
         });
 
