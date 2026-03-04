@@ -103,6 +103,27 @@ public class GravityFrame extends JFrame
         add(northPanel, BorderLayout.NORTH);
 
         add(gravityComponent, BorderLayout.CENTER);
+
+        Runnable runnable = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                while (true)
+                {
+                    gravityComponent.repaint();
+                    try
+                    {
+                        Thread.sleep(16);
+                    } catch (InterruptedException e)
+                    {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
     public static void main(String[] args)
