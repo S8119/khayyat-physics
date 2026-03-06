@@ -7,7 +7,6 @@ public class GravityComponent extends JComponent
 {
     private Force force = new Force(37.0365, 28.9360);
     private Projectile p = new Projectile(force, 0, 0);
-    private double apexX = p.getForce().getX();
     private double apex = p.getApex();
     private double time = 5;
 
@@ -15,7 +14,6 @@ public class GravityComponent extends JComponent
     {
         this.force = force;
         p = new Projectile(force, 0, 0);
-        apexX = force.getX();
         apex = p.getApex();
         repaint();
     }
