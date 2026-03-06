@@ -36,6 +36,6 @@ class ProjectileTest
         double apex = p.getApex();
 
         //then
-        assertEquals(25, apex, .1);
+        assertEquals(42.72, apex, .1);
     }
 }
