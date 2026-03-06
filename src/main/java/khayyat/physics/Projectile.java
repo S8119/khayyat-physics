@@ -29,6 +29,11 @@ public class Projectile
         return force;
     }
 
+    public double getApex()
+    {
+        return (force.getY() * force.getY()) / (2 * GRAVITY.getMagnitude());
+    }
+
     public void apply(double time)
     {
         Force scaledGravity = GRAVITY.scale(time);
