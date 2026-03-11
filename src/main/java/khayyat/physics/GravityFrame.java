@@ -8,7 +8,7 @@ public class GravityFrame extends JFrame
 {
     public GravityFrame()
     {
-        setSize(600, 400);
+        setSize(800, 400);
         setTitle("Gravity Frame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -25,11 +25,12 @@ public class GravityFrame extends JFrame
 
         JLabel angleLabel = new JLabel("Angle (Degrees): ");
         JLabel magLabel = new JLabel("Magnitude: ");
+        JLabel apexLabel = new JLabel("Apex: ");
 
         GravityComponent gravityComponent = new GravityComponent();
 
         GravityController gravityController = new GravityController(
-                gravityComponent, xField, yField, timeField, angleLabel, magLabel);
+                gravityComponent, xField, yField, timeField, angleLabel, magLabel, apexLabel);
 
         gravityComponent.addMouseListener(new MouseListener()
         {
@@ -100,9 +101,31 @@ public class GravityFrame extends JFrame
         northPanel.add(button);
         northPanel.add(angleLabel);
         northPanel.add(magLabel);
+        northPanel.add(apexLabel);
         add(northPanel, BorderLayout.NORTH);
 
         add(gravityComponent, BorderLayout.CENTER);
+
+        Runnable runnable = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                while (true)
+                {
+                    gravityComponent.repaint();
+                    try
+                    {
+                        Thread.sleep(16);
+                    } catch (InterruptedException e)
+                    {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
     public static void main(String[] args)

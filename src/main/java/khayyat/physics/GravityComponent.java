@@ -6,11 +6,15 @@ import java.awt.*;
 public class GravityComponent extends JComponent
 {
     private Force force = new Force(37.0365, 28.9360);
+    private Projectile p = new Projectile(force, 0, 0);
+    private double apex = p.getApex();
     private double time = 5;
 
     public void setForce(Force force)
     {
         this.force = force;
+        p = new Projectile(force, 0, 0);
+        apex = p.getApex();
         repaint();
     }
 
@@ -35,18 +39,17 @@ public class GravityComponent extends JComponent
             g.drawLine(0, i, getWidth(), i);
         }
 
-        Projectile p = new Projectile(force, 0, 0);
-
         g.translate(0, getHeight());
 
         g.setColor(Color.black);
-        for (double i = 0; i < time; i += 0.001)
-        {
-            p.apply(.001);
-            g.drawOval((int) p.getX(), (int) -p.getY(), 1, 1);
-        }
+        p.apply(.01);
+        g.fillOval((int) p.getX() - 5, (int) -p.getY() - 5, 10, 10);
+        //Subtracting 5 so center, not corner, represents projectile's position
 
         g.setColor(Color.green);
         g.drawLine(0, 0, (int) force.getX(), (int) -force.getY());
+
+        g.setColor(Color.red);
+        g.drawLine(0, (int) -apex, getWidth(), (int) -apex);
     }
 }

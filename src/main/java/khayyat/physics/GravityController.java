@@ -11,9 +11,10 @@ public class GravityController
     private final JTextField timeField;
     private final JLabel angleLabel;
     private final JLabel magLabel;
+    private final JLabel apexLabel;
 
     public GravityController(
-            GravityComponent gc, JTextField x, JTextField y, JTextField time, JLabel angle, JLabel mag)
+            GravityComponent gc, JTextField x, JTextField y, JTextField time, JLabel angle, JLabel mag, JLabel apex)
     {
         gravityComponent = gc;
         xField = x;
@@ -21,6 +22,7 @@ public class GravityController
         timeField = time;
         angleLabel = angle;
         magLabel = mag;
+        apexLabel = apex;
     }
 
     public void updateForce(double x, double y)
@@ -34,5 +36,8 @@ public class GravityController
         DecimalFormat df = new DecimalFormat("#.##");
         angleLabel.setText("Angle (Degrees): " + df.format(force.getDegrees()));
         magLabel.setText("Magnitude: " + df.format(force.getMagnitude()));
+
+        Projectile projectile = new Projectile(force, 0, 0);
+        apexLabel.setText("Apex: " + df.format(projectile.getApex()));
     }
 }

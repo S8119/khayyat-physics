@@ -1,9 +1,11 @@
 package khayyat.physics;
 
+import java.util.Objects;
+
 public class Force
 {
-    private double x;
-    private double y;
+    private final double x;
+    private final double y;
 
     public Force(double xVal, double yVal)
     {
@@ -56,5 +58,22 @@ public class Force
     public String toString()
     {
         return "x: " + x + ", y: " + y + ", magnitude: " + getMagnitude() + ", degrees: " + getDegrees();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
+        Force force = (Force) o;
+        return Double.compare(x, force.x) == 0 && Double.compare(y, force.y) == 0;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(x, y);
     }
 }

@@ -3,6 +3,7 @@ package khayyat.physics;
 public class Projectile
 {
     public static final Force GRAVITY = new Force(0, -9.8);
+    private final double forceY;
     private Force force;
     private double x;
     private double y;
@@ -10,6 +11,7 @@ public class Projectile
     public Projectile(Force force, double x, double y)
     {
         this.force = force;
+        forceY = force.getY();
         this.x = x;
         this.y = y;
     }
@@ -27,6 +29,11 @@ public class Projectile
     public Force getForce()
     {
         return force;
+    }
+
+    public double getApex()
+    {
+        return (forceY * forceY) / (2 * GRAVITY.getMagnitude());
     }
 
     public void apply(double time)
