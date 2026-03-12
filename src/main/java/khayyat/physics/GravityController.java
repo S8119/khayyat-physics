@@ -23,6 +23,7 @@ public class GravityController
         angleLabel = angle;
         magLabel = mag;
         apexLabel = apex;
+        updateForce(Double.parseDouble(x.getText()), Double.parseDouble(y.getText()));
     }
 
     public void updateForce(double x, double y)
