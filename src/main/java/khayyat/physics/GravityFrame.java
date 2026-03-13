@@ -34,6 +34,7 @@ public class GravityFrame extends JFrame
 
         GravityController gravityController = new GravityController(
                 gravityComponent, xField, yField, timeField, angleLabel, magLabel, apexLabel);
+        gravityController.updateForce(initialForce.getX(), initialForce.getY());
 
         gravityComponent.addMouseListener(new MouseListener()
         {
