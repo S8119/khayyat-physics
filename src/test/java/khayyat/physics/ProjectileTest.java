@@ -38,4 +38,17 @@ class ProjectileTest
         //then
         assertEquals(42.72, apex, .1);
     }
+
+    @Test
+    void getApexX()
+    {
+        //given
+        Projectile p = new Projectile(new Force(37.0365, 28.9360), 0, 0);
+
+        //when
+        double apexX = p.getApexX();
+
+        //then
+        assertEquals(109.3559, apexX, .1);
+    }
 }

@@ -33,7 +33,7 @@ public class GravityController
         xField.setText(String.valueOf(x));
         yField.setText(String.valueOf(y));
 
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("0.0000");
         angleLabel.setText("Angle (Degrees): " + df.format(force.getDegrees()));
         magLabel.setText("Magnitude: " + df.format(force.getMagnitude()));
 

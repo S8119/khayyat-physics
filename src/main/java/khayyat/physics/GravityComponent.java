@@ -50,6 +50,7 @@ public class GravityComponent extends JComponent
         g.drawLine(0, 0, (int) force.getX(), (int) -force.getY());
 
         g.setColor(Color.red);
-        g.drawLine(0, (int) -apex, getWidth(), (int) -apex);
+        g.drawOval((int) p.getApexX() - 5, (int) -p.getApex() - 5, 10, 10);
+        //Subtracting 5 so center, not corner, represents apex
     }
 }
